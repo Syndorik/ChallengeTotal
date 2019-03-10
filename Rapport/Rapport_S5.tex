@@ -1,0 +1,70 @@
+\documentclass{article} % for short documents
+%\documentclass{report} % for longer documents
+
+\usepackage{minted}
+
+%% Defining the language for the document
+\usepackage[english]{babel}
+\usepackage[english]{isodate}
+
+\usepackage{imta_core}
+\usepackage{imta_extra}
+\usepackage{epigraph}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{alertmessage}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+
+%% Addtionnal packages can be loaded here
+% \usepackage{biblatex} % for a complete and flexible bibliography
+
+
+\cleanlookdateon % formats date according to the loaded language from now on
+
+%% General informations
+\author{\\ Alexandre ALLANI \\
+	Adrien CLOTTEAU }
+%\imtaAuthorShort{<author's initials>}
+%\imtaSuperviser{<superviser>}
+\date{\noexpand\today} % automatically print today's date, can be redefined using \date{<date>}
+\title{Rapport projet S5}
+\subtitle{Challenge Total}
+%\imtaVersion{<version>}
+
+%Add extra other companies' logo
+%If needed, options can be passed to the underlying \includegraphics by calling \imtaAddPartnerLogo[<options>]{<path>}
+%\imtaAddPartnerLogo{<logo_path>}
+
+
+\imtaSetIMTStyle % Sets font and headers/footers according to the IMT Atlantue style guidelines
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%% BEGINNING %%%%%%%%%% 
+\begin{document}
+	
+	% front cover
+\imtaMaketitlepage
+\tableofcontents
+\newpage
+
+\section{Introduction}
+\section{Contexte}
+\section{Visualisation des données}
+
+\section{Préparation des données (Data Engineering)}
+
+\section{Modélisation}
+
+\section{Analyse des résultats}
+
+\section{Conclusion}
+
+\section{Annexe}
+
+
+\end{document}
+%%%%%%%%%% END %%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%% 
