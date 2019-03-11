@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.11.1)  10 MAR 2019 16:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.11.1)  11 MAR 2019 18:34
 entering extended mode
 **./Rapport_S5.tex
 (Rapport_S5.tex
@@ -1181,31 +1181,34 @@ pport_S5.aex <nul: /p x=^%~$PATH:i>> Rapport_S5.aex)...executed.
 
 runsystem(del Rapport_S5.aex)...executed.
 
- (Rapport_S5.aux)
+ (Rapport_S5.aux
+
+LaTeX Warning: Label `bb3' multiply defined.
+
+)
 \openout1 = `Rapport_S5.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 46.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 46.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 45.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 45.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Try loading font information for T1+phv on input line 46.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 45.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1phv.fd"
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
@@ -1272,7 +1275,7 @@ isodate: babel.sty has been loaded
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box70
-Package hyperref Info: Link coloring OFF on input line 46.
+Package hyperref Info: Link coloring OFF on input line 45.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
@@ -1281,9 +1284,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count336
 )
-LaTeX Info: Redefining \ref on input line 46.
-LaTeX Info: Redefining \pageref on input line 46.
-LaTeX Info: Redefining \nameref on input line 46.
+LaTeX Info: Redefining \ref on input line 45.
+LaTeX Info: Redefining \pageref on input line 45.
+LaTeX Info: Redefining \nameref on input line 45.
 
 (Rapport_S5.out) (Rapport_S5.out)
 \@outlinefile=\write7
@@ -1323,39 +1326,39 @@ LaTeX Info: Redefining \nameref on input line 46.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--49
-[]\T1/phv/m/n/12 10 March 2019 
+Underfull \hbox (badness 10000) in paragraph at lines 48--48
+[]\T1/phv/m/n/12 11 March 2019 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--49
+Underfull \hbox (badness 10000) in paragraph at lines 48--48
  
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--49
+Underfull \hbox (badness 10000) in paragraph at lines 48--48
 []\T1/phv/m/n/12 Adrien CLOT-TEAU 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--49
+Underfull \hbox (badness 10000) in paragraph at lines 48--48
  
  []
 
 
-Overfull \hbox (6.66595pt too wide) in paragraph at lines 49--49
+Overfull \hbox (6.66595pt too wide) in paragraph at lines 48--48
  []
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 49.
+(Font)              <7> on input line 48.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 49.
+(Font)              <5> on input line 48.
 \imta@picWidth=\skip142
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <20> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 49.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 48.
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--49
+Underfull \hbox (badness 10000) in paragraph at lines 48--48
 
  []
 
@@ -1368,9 +1371,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 49--49
 
 {C:/Users/alexa/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 50.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 49.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 50.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 49.
 
 (Rapport_S5.toc
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
@@ -1382,36 +1385,193 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
  [2
 
 
-] [3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 68.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 68.
- (Rapport_S5.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 68.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 68.
+]
+<img/alertmessage-info.png, id=123, 32.57239pt x 32.57239pt>
+File: img/alertmessage-info.png Graphic file (type png)
+<use img/alertmessage-info.png>
+Package pdftex.def Info: img/alertmessage-info.png  used on input line 54.
+(pdftex.def)             Requested size: 16.28615pt x 16.28615pt.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 54.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+[3 <C:/Program Files/MiKTeX 2.9/tex/latex/alertmessage/img/alertmessage-info.pn
+g>]
+File: img/alertmessage-info.png Graphic file (type png)
+<use img/alertmessage-info.png>
+Package pdftex.def Info: img/alertmessage-info.png  used on input line 65.
+(pdftex.def)             Requested size: 16.28615pt x 16.28615pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--65
+[]\T1/phv/m/n/10 Le code lié à cette par-tie est disponible sur le lien suiv-an
+t
+ []
 
 
-Package rerunfilecheck Warning: File `Rapport_S5.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
+Underfull \hbox (badness 10000) in paragraph at lines 65--65
+[]$\T1/cmtt/m/n/10 https : / / github . com / Syndorik / ChallengeTotal / blob 
+/ master /
+ []
 
-Package rerunfilecheck Info: Checksums for `Rapport_S5.out':
-(rerunfilecheck)             Before: 277D1C13A520F0FCD71CEB334CA6A085;399
-(rerunfilecheck)             After:  283243507A4BFB0F2321EAEC1CD4D06E;441.
+[4]
+File: img/alertmessage-info.png Graphic file (type png)
+<use img/alertmessage-info.png>
+Package pdftex.def Info: img/alertmessage-info.png  used on input line 69.
+(pdftex.def)             Requested size: 16.28615pt x 16.28615pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+\T1/cmtt/m/n/10 com / Syndorik / ChallengeTotal / blob / master / Data-[]Engine
+ering-[]and _
+ []
+
+
+Package hyperref Warning: Difference (5) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 72.
+
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 75.
+<varvente.png, id=143, 705.837pt x 379.4175pt>
+File: varvente.png Graphic file (type png)
+<use varvente.png>
+Package pdftex.def Info: varvente.png  used on input line 80.
+(pdftex.def)             Requested size: 458.78862pt x 246.61844pt.
+<saleholiday.png, id=147, 751.608pt x 246.32025pt>
+File: saleholiday.png Graphic file (type png)
+<use saleholiday.png>
+Package pdftex.def Info: saleholiday.png  used on input line 89.
+(pdftex.def)             Requested size: 488.53941pt x 160.10626pt.
+
+Overfull \hbox (4.84254pt too wide) in paragraph at lines 89--90
+ [][] 
+ []
+
+[5 <./varvente.png>]
+<vente_week.png, id=158, 691.383pt x 352.31625pt>
+File: vente_week.png Graphic file (type png)
+<use vente_week.png>
+Package pdftex.def Info: vente_week.png  used on input line 103.
+(pdftex.def)             Requested size: 449.39363pt x 229.00284pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--109
+
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 111.
+[6 <./saleholiday.png>]
+
+LaTeX Warning: Reference `cat5p1' on page 7 undefined on input line 114.
+
+
+LaTeX Warning: Reference `cat5p2' on page 7 undefined on input line 114.
+
+<categorie5part1.png, id=167, 770.88pt x 218.0145pt>
+File: categorie5part1.png Graphic file (type png)
+<use categorie5part1.png>
+Package pdftex.def Info: categorie5part1.png  used on input line 117.
+(pdftex.def)             Requested size: 501.06607pt x 141.70773pt.
+
+Overfull \hbox (17.3692pt too wide) in paragraph at lines 117--118
+ [][] 
+ []
+
+<categorie5part2.png, id=170, 770.88pt x 219.82124pt>
+File: categorie5part2.png Graphic file (type png)
+<use categorie5part2.png>
+Package pdftex.def Info: categorie5part2.png  used on input line 126.
+(pdftex.def)             Requested size: 501.06607pt x 142.8821pt.
+
+Overfull \hbox (17.3692pt too wide) in paragraph at lines 126--127
+ [][] 
+ []
+
+[7 <./vente_week.png> <./categorie5part1.png>]
+<OHE.png, id=183, 588.39825pt x 203.5605pt>
+File: OHE.png Graphic file (type png)
+<use OHE.png>
+Package pdftex.def Info: OHE.png  used on input line 135.
+(pdftex.def)             Requested size: 323.62004pt x 111.95862pt.
+ [8 <./categorie5part2.png> <./OHE.png>] [9]
+File: img/alertmessage-info.png Graphic file (type png)
+<use img/alertmessage-info.png>
+Package pdftex.def Info: img/alertmessage-info.png  used on input line 159.
+(pdftex.def)             Requested size: 16.28615pt x 16.28615pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--159
+\T1/cmtt/m/n/10 com / Syndorik / ChallengeTotal / blob / master / Data-[]Engine
+ering-[]and _
+ []
+
+File: img/alertmessage-info.png Graphic file (type png)
+<use img/alertmessage-info.png>
+Package pdftex.def Info: img/alertmessage-info.png  used on input line 164.
+(pdftex.def)             Requested size: 16.28615pt x 16.28615pt.
+[10] [11] [12]
+<categorie.png, id=213, 770.88pt x 434.8245pt>
+File: categorie.png Graphic file (type png)
+<use categorie.png>
+Package pdftex.def Info: categorie.png  used on input line 178.
+(pdftex.def)             Requested size: 501.06607pt x 282.63255pt.
+
+Overfull \hbox (17.3692pt too wide) in paragraph at lines 178--179
+ [][] 
+ []
+
+<categorie6.png, id=214, 899.7615pt x 445.665pt>
+File: categorie6.png Graphic file (type png)
+<use categorie6.png>
+Package pdftex.def Info: categorie6.png  used on input line 184.
+(pdftex.def)             Requested size: 494.87036pt x 245.1165pt.
+
+Overfull \hbox (11.1735pt too wide) in paragraph at lines 184--185
+ [][] 
+ []
+
+[13 <./categorie.png> <./categorie6.png>]
+<categorie4.png, id=222, 708.246pt x 177.66376pt>
+File: categorie4.png Graphic file (type png)
+<use categorie4.png>
+Package pdftex.def Info: categorie4.png  used on input line 191.
+(pdftex.def)             Requested size: 389.5365pt x 97.71536pt.
+ [14 <./categorie4.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 195.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 195.
+
+(Rapport_S5.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 195.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 195.
+Package rerunfilecheck Info: File `Rapport_S5.out' has not changed.
+(rerunfilecheck)             Checksum: 46EAA025F2DDC050317A8DD30E20C69C;1588.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 30651 strings out of 492970
- 582373 string characters out of 3135855
- 699391 words of memory out of 3000000
- 34062 multiletter control sequences out of 15000+200000
- 559640 words of font info for 45 fonts, out of 3000000 for 9000
+ 30792 strings out of 492970
+ 584707 string characters out of 3135855
+ 705043 words of memory out of 3000000
+ 34150 multiletter control sequences out of 15000+200000
+ 568892 words of font info for 53 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,12n,74p,827b,761s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/Mi
-KTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts
-/type1/urw/helvetic/uhvr8a.pfb>
-Output written on Rapport_S5.pdf (3 pages, 27955 bytes).
+ 62i,14n,74p,878b,761s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc} <C:\Users\alexa\App
+Data\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk><C:/Progra
+m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/
+type1/urw/helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helv
+etic/uhvr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.p
+fb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/zapfding/uzdr.pfb>
+Output written on Rapport_S5.pdf (14 pages, 568289 bytes).
 PDF statistics:
- 72 PDF objects out of 1000 (max. 8388607)
- 13 named destinations out of 1000 (max. 500000)
- 69 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 300 PDF objects out of 1000 (max. 8388607)
+ 46 named destinations out of 1000 (max. 500000)
+ 231 words of extra memory for PDF output out of 10000 (max. 10000000)
 
