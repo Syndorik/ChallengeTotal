@@ -149,23 +149,99 @@ Cependant il y a plusieurs désavantage à cette technique:
 Cette méthode étant simple à appliquer et permettant l'utilisation direct de la majorité des algorithme, nous allons tout de même l'utiliser dans la suite du projet.
  
 \subsubsection{Normalisation des données}
-
-
+De même que pour le One Hot Encoding, il est nécessaire (ou préférable) pour certains algorithmes, en particulier le Réseau de Neurone, d'avoir des données normalisés. En effet le Réseau de Neurone ne prend en entrée que des données normalisés. Nous avons donc normalisé par rapport à la différence minimum/ maximum pour chaque variable numérique.\\
+La normalisation permet aussi d'avoir une convergence plus rapide pour les algorithme basé sur de l'optimisation par gradient (Gradient boosting). Ce dernier se base sur une step size (le gradient de la fonction d'erreur multiplié par le taux d'apprentissage), cependant si les variables ne sont pas sur la même échelle, les step size sont différentes (car le gradient est différent) rendant la méthode de gradient boosting plus longue.\\
+De plus elle permet d'avoir de meilleurs résultats pour le modèle linéaire, car celui-ci est moins affecté par les grandes variations. Les variables ayant un grand intervalle de définition vont induire une grande variance au modèle, ce qui leur donne trop d'importance.\\
+Pour toute ces raisons, nous appliquons une normalisation des données.
 \newpage
 \section{Modélisation}
-\subsection{Modélisation basée sur le Data Engineering}
-
 \alertinfo{Le code lié à cette partie est disponible sur le lien suivant \url{https://github.com/Syndorik/ChallengeTotal/blob/master/Data-Engineering-and_Modeling.ipynb}. 
 }
+Dans cette section, nous présentons l'ensemble des modèles qui ont été testés pour modéliser le problème posé par Argedis. 
+\subsection{Modélisation basée sur le Data Engineering}
+Le modèle doit répondre à un problème de régression de machine learning supervisé. Ici, on considère la variable comme continue (classement supervisé), bien qu'elle soit en réalité discontinue. En effet, comme précisé en Introduction, la quantité vendu d'un produit est le multiple d'un certain nombre propre au produit. Ainsi dans l'idéal, une modèle aurait été développé par produit. Dans ce cas là, le problème aurait été un problème de classification. Cependant, au vu de la taille faible de notre jeu de donnée, il peut être compliqué de faire un modèle par produit. On a choisi de garder comme base d'entraînement l'ensemble des produits, cette\\
+Une autre possibilité aurait été de faire un modèle apprenant sur les périodes de travail (hors vacances) et un modèles apprenant sur les vacances. Comme nous l'avons vu, les périodes de vacances sont anormales : période de haute variance de quantité d'articles vendues. Donc cela va avoir tendance à perturber les modèles. Cependant nous n'avions qu'une année et demi de données. La période trop courte pour pouvoir faire cela. Il est à noter que les Time Series vont nous aider sur cette problématique. 
+Nous allons détailler l'ensemble des modèles suivant :
+\begin{itemize}
+	\item Régression linéaire
+	\item Decision Tree Regressor
+	\item Extra Tree Regressor
+	\item Random Forest Regressor
+	\item Gradient Boosting Regressor
+	\item XGBOOST
+	\item Multi-layer Perceptron (MLP)
+\end{itemize}
+
+\subsubsection{Méthodologie d'évaluation des modèles}
+Comme nous l'avons énoncé en Introduction, notre modèle est évalué selon le RMSE : 
+$\sqrt{\frac{\sum_{i=1}^{n}(\hat{y}_t-y_t)^2}{n}}$. La méthode que nous avons utilisé pour s'assurer de la validité d'un modèle est la validation croisée (cross-validation). Le principe est d'entraîner le modèle sur une partie du jeu de donnée, 80\% par exemple et d'utiliser les 20\% restant pour le tester. Le processus est répété un nombre n de fois, et la moyenne des scores RMSE obtenus nous permet d'évaluer le modèle
+
+\subsubsection{Méthodologie d'amélioration des modèles}
+Chaque modèle, que nous allons expliciter dans les parties suivantes, possède des paramètres qui lui sont propre. Pour chaque modèle nous allons énoncer les paramètres les plus important. Cependant la méthodologie pour optimiser ces derniers est la même. Pour chaque combinaison de paramètre, nous allons lancer l'apprentissage d'un modèle et son évaluation par cross-validation (en RMSE).\\
+Les paramètres du modèle ayant la meilleure évaluation seront considérés comme optimum. Dans la pratique, il existe une multitude de paramètre pour chaque algorithme, en général nous n'appliquons cette méthode que pour certains d'entre eux.
+
+
+\subsubsection{Régression linéaire}
+Ce modèle essaie de décrire les relations entre la variable à prédire et les variables d'entraînement comme linéaire (du type : $Y = \beta_0 + \beta_1X_1 + \beta_2X_2 ...$ avec $Y$ la variable à prédire et les $X_i$ les variables d'entraînements). La méthode utilisée pour créer la courbe de régression est la méthode des moindres carrés. On obtient après entraînement un score $R^2$ de 35.4\%, ce qui veut dire que ce modèle explique 35.4\% de la variance. Le score RMSE est le suivant
+\alertinfo{RMSE = 0.9568 }
+Ce score est assez faible surtout en comparaison des autres modèles. Cela est assez logique, car les relations au sein de notre jeu de données ne sont clairement pas linéaire, et il est assez difficile de modéliser des relations non linéaire avec ce modèle. C'est possible via l'introduction de termes d'interaction, mais cela reste assez primaire comme modélisation.
+
+\subsubsection{Decision Tree Regressor et Extra Tree Regressor}
+Ces modèles se basent sur la création d'arbre afin de fournir une prédiction. Le principe est que chaque feuille de l'arbre de décision va utiliser une variable pour effectuer une partition des données. Les arbres de décision permettent d'avoir un modèle qui est compréhensible en sortie d'apprentissage. Nous obtenons les résultats suivant :
+\alertinfo{$RMSE_{Decision-tree-Regressor} = 0.669$ et $RMSE_{Extra-tree-regressor} = 0.646$ }
+La différence entre le Decision Tree Regressor et l'Extra Tree Regressor repose sur la manière séparer la population au sein d'un noeud afin de créer une branche. L'Extra Tree Regressor va prendre un certain nombre de variables au sein d'un noeud, regarder quelle est la meilleure manière de séparer le noeud à partir de ces variables et recommencer le processus plusieurs fois. Le meilleur \textit{split} est alors choisi.\\
+Cela explique pourquoi l'Extra Tree Regressor possède un meilleur score RMSE. Cependant, le grand inconvénient de ces méthodes est qu'elles ont tendance à sur-apprendre ou au contraire pas assez apprendre en fonction de la profondeur de l'arbre. C'est pourquoi nous nous sommes concentrés sur les modèles ensemblistes d'arbre de décision.\\
+Paramètres principaux à optimiser : la profondeur de l'arbre, le nombre minimum de feuilles
+
+\subsubsection{Random Forest Regressor}
+Les forêts d'arbre de décision ou random forest, se base sur la création de plusieurs arbres de décision. Le principe est de créer plusieurs arbres de décision de manière aléatoire : sélection aléatoire des variable et du jeu d'apprentissage (bootstrap sample). Une fois l'apprentissage des arbres fini, il suffit de moyenner la sortie de chaque arbre de décision pour obtenir la variable à prédire. C'est le principe du bagging.Nous obtenons les résultats suivant :
+\alertinfo{$RMSE = 0.57997$ }
+Le score obtenu est meilleur que pour les précédents modèles utilisés. Cela s'explique par l'aspect général du modèle qui permet de compenser les problèmes de sur-apprentissage que l'on peut rencontrer avec un arbre de décision unique. L'inconvénient de cette méthode est le temps d'exécution qui peut être assez long.\\
+Paramètres principaux à optimiser :la profondeur de l'arbre, le nombre minimum de feuilles, le nombre d'arbre maximum
+
+\subsubsection{Gradient Boosting et XGBOOST Regressor}
+Ces deux modèles sont des versions modifiés des forêts d'arbre de décision. Au lieu de se baser sur du bagging pour créer les arbres de décisions, ils se basent sur des méthodes de gradient boosting. Le principe est de créer des arbres de décisions à la chaîne. Cependant entre chaque création d'arbre, l'erreur est minimisée en utilisant la méthode de descente du gradient. Nous obtenons les résultats suivant :
+\alertinfo{$RMSE = 0.57909$ }
+Le score obtenu est meilleur que pour les forêts d'arbres aléatoires. Cependant, la différence se fait au millième du RMSE. Sachant que notre prédiction est continue alors que la quantité vendue par produit prend des valeurs discontinue, la différence obtenue n'est pas significative. En effet l'erreur dû à l'échantillonnage est plus grande.\\
+On peut trouver une explication à ces résultats par le fait que les deux algorithmes reposent sur la création d'arbre de décision. Les forêts d'arbre aléatoires vont en général essayer de réduire la variance tandis que les méthodes de boosting vont essayer de réduire le biais. Ici, il apparaît que dans les deux cas nous obtenons une erreur similaire.\\
+Paramètres principaux à optimiser : le taux d'apprentissage, la profondeur de l'arbre, le nombre minimum de feuilles, le nombre d'arbre maximum.
+
+\subsubsection{Multi-layer Perceptron (MLP)}
+Cet algorithme repose sur la création d'un réseau de neurone. Il va apprendre une fonction à partir du jeu de données. L'avantage est la capacité de modéliser les non linéarités. Le réseau de neurone comporte 4 couches dont deux caché. La première est l'input layer, la seconde est composée de 32 neurones, la deuxième de 16 neurones, et la dernière de une neurone (correspondant à la variable à prédire). La fonction d'activation utilisé est la fonction "relu". 
+\alertinfo{$RMSE = 0.685$ }
+Le score obtenu est moins bon que pour les autres modèles testés auparavant. Cela est probablement du au fait que notre réseau de neurone n'est pas adapté à notre problème et qu'il pourrait être optimisé. Cependant le temps d'apprentissage du réseau étant relativement long, nous n'avons pas insisté sur cette voie. 
+
+\subsubsection{Stacking}
+Cette méthode ensembliste permet de combiner les meilleurs modèles précédemment créé afin d'obtenir un modèle plus performant. Dans notre cas, nous avons pris 3 modèles différents, le modèle linéaire, le modèle de forêt aléatoire et le modèle Gradient Boosting. Le principe est décrit en \textbf{Figure ~\ref{fig:stacking}}. Le jeu de données est divisé en différente base d'apprentissage pour différent modèle. Les prédictions faites à partir des modèles vont ensuite servir de base d'apprentissage au meta-modèle. Dans notre cas ce sera un XGBOOST. Nous obtenons alors le résultat suivant : 
+\alertinfo{$RMSE = 0.5735$ }
+Le score obtenu est meilleure mais ne varie que de quelques centièmes. En effet, le stacking est utile pour combiner des modèles qui ont des zones d'erreurs assez différentes. Les modèles basés sur les forêts d'arbres de décision et les modèles basés sur XGBOOST ont des zones d'erreurs assez similaires. Ainsi, nos modèles sont trop similaire pour bénéficier du stacking.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[keepaspectratio = true,scale=0.65]{stacking.png}
+	\caption{Principe du stacking}
+	\label{fig:stacking}
+\end{figure}
+\newpage
+\subsubsection{Post-traitement}
+Nous avons implémenté deux post-traitement en vue d'améliorer la qualité de notre modèle.
+\begin{itemize}
+	\item Il existe des produits qui étaient disponible dans une station mais pas dans l'autre, et vice-versa. Nous savons dès lors, que s'il est demandé de prédire le nombre de vente d'un produit qui n'existe pas dans la station, il sera prédit automatiquement à 0.
+	\item Nous savons qu'un produit peut prendre des valeurs de quantité vendue qui ne sont que des multiples d'une quantité de base. Cette quantité de base est différente pour chaque produit. Ainsi, nous avons tenter d'approximer chaque quantité vendu soit par sa valeur de multiple supérieur soit par sa valeur de multiple inférieure. 
+\end{itemize}
+Le premier point du post-traitement est assez efficace et améliore effectivement les prédictions des modèles.\\
+Le deuxième point est bien plus problématique. Nous l'avons testé  sur les résultats du modèle stacké et nous sommes passés d'un RMSE de 0.5735 à un RMSE de 0.72. Nous nous attendions à une régression légère du score RMSE, cependant ici cela est bien trop grand. Il y a plusieurs explications possibles. Tout d'abord, notre post-traitement ce trompe pour chaque produit et retourne toujours la mauvaise valeur (ie il retourne la valeur au-dessus quand la valeur réelle est en dessous et inversement). Cette première explication semble assez improbable. Une seconde explicaiton serait une mauvaise compréhension de la variable quantité vendue. En effet, aucune information dans le jeu de donnée ne nous dis ce qu'elle représente exactement.
+
 
 \subsection{Modélisation basée sur les Time Series}
 \label{sec:tm}
 \alertinfo{Le code lié à cette partie est disponible sur le lien suivant \url{https://github.com/Syndorik/ChallengeTotal/blob/master/Time_series.ipynb}. 
 }
 
-\newpage
-\section{Analyse des résultats}
 
+\newpage
+\subsection{Analyse des résultats}
+Etudes par produit aurait pu être plus fructueuse. Cela n'a pas été fait, mais peut donner des meilleurs résultats, surtout que les ventes de produits sont très différentes et varie différement. 
 \newpage
 \section{Conclusion}
 
@@ -180,7 +256,7 @@ Cette méthode étant simple à appliquer et permettant l'utilisation direct de 
 \end{figure}
 
 \begin{figure}[!h]
-	\centering
+	\centering 
 	\includegraphics[keepaspectratio = true,scale=0.55]{categorie6.png}
 	\caption{Vente cumulé en fonction de la catégorie 6}
 	\label{bb3}
