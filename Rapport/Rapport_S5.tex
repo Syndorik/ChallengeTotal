@@ -120,15 +120,13 @@ En représentant le nombre d’occurrences des valeurs de force de vent, on se r
 La nébulosité est exprimée par 4 variables de la forme \textit{n\_Hh\_Ville} avec $H \in {9,15}$ et $Ville \in {\mbox{Paris},\mbox{Rouen}}$. Elles donnent la nébulosité mesurée à Paris ou Rouen à 9h ou à 15h.\\
 \begin{wrapfigure}[17]{L}{110mm}
 	\centering
-	\includegraphics[keepaspectratio = true,scale=0.55]{neb.png}
+	\includegraphics[keepaspectratio = true,scale=0.65]{neb.png}
 	\caption[Nebulosité pour une des stations; Service au cours de l'année]{\tabular[t]{@{}l@{}}Nebulosité pour une des stations\\ Service au cours de l'année\endtabular}
 	\label{fig:neb}
 \end{wrapfigure}
 ~\\
 
-En représentant le nombre d’occurrences de chaque valeur de nébulosité, on se rend compte que celle-ci ne prend qu’un certain nombre de valeurs discrètes. A part 4 points aberrants, la nébulosité ne peut prendre que 10 valeurs : les neufs octas possibles (de 0/8 à 8/8) affichés en pourcentages et la valeur 101. \\
-
-La nébulosité est traditionnellement calculée en octas, un 0 représentant un ciel dégagé, un 8 représentant un ciel couvert.
+En représentant le nombre d’occurrences de chaque valeur de nébulosité, on se rend compte que celle-ci ne prend qu’un certain nombre de valeurs discrètes. A part 4 points aberrants, la nébulosité ne peut prendre que 10 valeurs : les neufs octas possibles (de 0/8 à 8/8) affichés en pourcentages et la valeur 101. La nébulosité est traditionnellement calculée en octas, un 0 représentant un ciel dégagé, un 8 représentant un ciel couvert.\\
 
 Cependant, il reste à découvrir si la valeur 101 est significative d’un évènement particulier ou si elle doit être considérée comme une erreur de remplissage du jeu de données.\\
 En n’affichant uniquement que les jours où la nébulosité vaut 101 (\textbf{Figure ~\ref{fig:neb1}}) pour Rouen à 9h, on se rend compte que ce phénomène a lieu majoritairement pendant l’hiver.
