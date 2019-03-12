@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.11.1)  12 MAR 2019 17:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.11.1)  12 MAR 2019 17:19
 entering extended mode
 **./Rapport_S5.tex
 (Rapport_S5.tex
@@ -1414,7 +1414,7 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
 
 
 ]
-<img/alertmessage-info.png, id=233, 32.57239pt x 32.57239pt>
+<img/alertmessage-info.png, id=238, 32.57239pt x 32.57239pt>
 File: img/alertmessage-info.png Graphic file (type png)
 <use img/alertmessage-info.png>
 Package pdftex.def Info: img/alertmessage-info.png  used on input line 58.
@@ -1454,7 +1454,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 82--83
 
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 88.
-<t9hr.png, id=254, 616.10175pt x 303.534pt>
+<t9hr.png, id=259, 616.10175pt x 303.534pt>
 File: t9hr.png Graphic file (type png)
 <use t9hr.png>
 Package pdftex.def Info: t9hr.png  used on input line 102.
@@ -1465,12 +1465,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 107--108
  []
 
 [4 <./t9hr.png>]
-<wind.png, id=264, 481.19775pt x 237.2865pt>
+<wind.png, id=269, 481.19775pt x 237.2865pt>
 File: wind.png Graphic file (type png)
 <use wind.png>
 Package pdftex.def Info: wind.png  used on input line 113.
 (pdftex.def)             Requested size: 264.65958pt x 130.50797pt.
-<neb.png, id=265, 481.8pt x 233.673pt>
+<neb.png, id=270, 481.8pt x 233.673pt>
 File: neb.png Graphic file (type png)
 <use neb.png>
 Package pdftex.def Info: neb.png  used on input line 123.
@@ -1571,7 +1571,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 129--130
  []
 
 [5 <./wind.png> <./neb.png>]
-<neb101.png, id=274, 478.78876pt x 249.3315pt>
+<neb101.png, id=279, 478.78876pt x 249.3315pt>
 File: neb101.png Graphic file (type png)
 <use neb101.png>
 Package pdftex.def Info: neb101.png  used on input line 142.
@@ -1581,12 +1581,12 @@ Overfull \hbox (21.48619pt too wide) in paragraph at lines 142--143
  [][] 
  []
 
-<meteo.png, id=275, 537.80925pt x 398.6895pt>
+<meteo.png, id=280, 537.80925pt x 398.6895pt>
 File: meteo.png Graphic file (type png)
 <use meteo.png>
 Package pdftex.def Info: meteo.png  used on input line 148.
 (pdftex.def)             Requested size: 242.01192pt x 179.40862pt.
-<precip.png, id=278, 545.6385pt x 268.00125pt>
+<precip.png, id=283, 545.6385pt x 268.00125pt>
 File: precip.png Graphic file (type png)
 <use precip.png>
 Package pdftex.def Info: precip.png  used on input line 166.
@@ -1596,7 +1596,7 @@ Overfull \hbox (3.68661pt too wide) in paragraph at lines 166--167
  [][] 
  []
 
-<precip2.png, id=279, 545.6385pt x 269.20575pt>
+<precip2.png, id=284, 545.6385pt x 269.20575pt>
 File: precip2.png Graphic file (type png)
 <use precip2.png>
 Package pdftex.def Info: precip2.png  used on input line 172.
@@ -1622,17 +1622,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 184--186
 
  []
 
-<maps.png, id=290, 446.8695pt x 264.38776pt>
+<maps.png, id=295, 446.8695pt x 264.38776pt>
 File: maps.png Graphic file (type png)
 <use maps.png>
 Package pdftex.def Info: maps.png  used on input line 199.
 (pdftex.def)             Requested size: 201.08942pt x 118.97337pt.
-<bison.png, id=291, 404.712pt x 132.495pt>
+<bison.png, id=296, 404.712pt x 132.495pt>
 File: bison.png Graphic file (type png)
 <use bison.png>
 Package pdftex.def Info: bison.png  used on input line 205.
 (pdftex.def)             Requested size: 182.11871pt x 59.6222pt.
-<corr.png, id=292, 450.483pt x 410.7345pt>
+<corr.png, id=297, 450.483pt x 410.7345pt>
 File: corr.png Graphic file (type png)
 <use corr.png>
 Package pdftex.def Info: corr.png  used on input line 219.
@@ -1655,12 +1655,12 @@ ering-[]and _
 Package hyperref Warning: Difference (5) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 236.
 
-<varvente.png, id=307, 705.837pt x 379.4175pt>
+<varvente.png, id=311, 705.837pt x 379.4175pt>
 File: varvente.png Graphic file (type png)
 <use varvente.png>
 Package pdftex.def Info: varvente.png  used on input line 244.
 (pdftex.def)             Requested size: 458.78862pt x 246.61844pt.
-<saleholiday.png, id=311, 751.608pt x 246.32025pt>
+<saleholiday.png, id=315, 751.608pt x 246.32025pt>
 File: saleholiday.png Graphic file (type png)
 <use saleholiday.png>
 Package pdftex.def Info: saleholiday.png  used on input line 253.
@@ -1671,7 +1671,7 @@ Overfull \hbox (4.84254pt too wide) in paragraph at lines 253--254
  []
 
 [9 <./varvente.png>]
-<vente_week.png, id=322, 691.383pt x 352.31625pt>
+<vente_week.png, id=326, 691.383pt x 352.31625pt>
 File: vente_week.png Graphic file (type png)
 <use vente_week.png>
 Package pdftex.def Info: vente_week.png  used on input line 267.
@@ -1685,7 +1685,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 264--273
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [10 <./saleholiday.png>]
-<categorie5part1.png, id=333, 770.88pt x 218.0145pt>
+<categorie5part1.png, id=337, 770.88pt x 218.0145pt>
 File: categorie5part1.png Graphic file (type png)
 <use categorie5part1.png>
 Package pdftex.def Info: categorie5part1.png  used on input line 281.
@@ -1695,7 +1695,7 @@ Overfull \hbox (17.3692pt too wide) in paragraph at lines 281--282
  [][] 
  []
 
-<categorie5part2.png, id=336, 770.88pt x 219.82124pt>
+<categorie5part2.png, id=340, 770.88pt x 219.82124pt>
 File: categorie5part2.png Graphic file (type png)
 <use categorie5part2.png>
 Package pdftex.def Info: categorie5part2.png  used on input line 290.
@@ -1706,7 +1706,7 @@ Overfull \hbox (17.3692pt too wide) in paragraph at lines 290--291
  []
 
 [11 <./vente_week.png> <./categorie5part1.png>]
-<OHE.png, id=345, 588.39825pt x 203.5605pt>
+<OHE.png, id=349, 588.39825pt x 203.5605pt>
 File: OHE.png Graphic file (type png)
 <use OHE.png>
 Package pdftex.def Info: OHE.png  used on input line 299.
@@ -1748,7 +1748,7 @@ File: img/alertmessage-info.png Graphic file (type png)
 <use img/alertmessage-info.png>
 Package pdftex.def Info: img/alertmessage-info.png  used on input line 380.
 (pdftex.def)             Requested size: 16.28615pt x 16.28615pt.
-<stacking.png, id=369, 535.40025pt x 240.9pt>
+<stacking.png, id=373, 535.40025pt x 240.9pt>
 File: stacking.png Graphic file (type png)
 <use stacking.png>
 Package pdftex.def Info: stacking.png  used on input line 385.
@@ -1766,7 +1766,7 @@ File: img/alertmessage-info.png Graphic file (type png)
 <use img/alertmessage-info.png>
 Package pdftex.def Info: img/alertmessage-info.png  used on input line 405.
 (pdftex.def)             Requested size: 16.28615pt x 16.28615pt.
-<ventesprevision.png, id=378, 693.792pt x 362.5545pt>
+<ventesprevision.png, id=382, 693.792pt x 362.5545pt>
 File: ventesprevision.png Graphic file (type png)
 <use ventesprevision.png>
 Package pdftex.def Info: ventesprevision.png  used on input line 409.
@@ -1775,58 +1775,62 @@ Package pdftex.def Info: ventesprevision.png  used on input line 409.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[17 <./stacking.png>] [18 <./ventesprevision.png>]
-<categorie.png, id=389, 770.88pt x 434.8245pt>
+[17 <./stacking.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 419--420
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 419--420
+
+ []
+
+[18 <./ventesprevision.png>]
+<categorie.png, id=393, 770.88pt x 434.8245pt>
 File: categorie.png Graphic file (type png)
 <use categorie.png>
-Package pdftex.def Info: categorie.png  used on input line 426.
+Package pdftex.def Info: categorie.png  used on input line 430.
 (pdftex.def)             Requested size: 501.06607pt x 282.63255pt.
 
-Overfull \hbox (17.3692pt too wide) in paragraph at lines 426--427
+Overfull \hbox (17.3692pt too wide) in paragraph at lines 430--431
  [][] 
  []
 
-<categorie6.png, id=390, 899.7615pt x 445.665pt>
+<categorie6.png, id=394, 899.7615pt x 445.665pt>
 File: categorie6.png Graphic file (type png)
 <use categorie6.png>
-Package pdftex.def Info: categorie6.png  used on input line 432.
+Package pdftex.def Info: categorie6.png  used on input line 436.
 (pdftex.def)             Requested size: 494.87036pt x 245.1165pt.
 
-Overfull \hbox (11.1735pt too wide) in paragraph at lines 432--433
+Overfull \hbox (11.1735pt too wide) in paragraph at lines 436--437
  [][] 
  []
 
 [19 <./categorie.png> <./categorie6.png>]
-<categorie4.png, id=398, 708.246pt x 177.66376pt>
+<categorie4.png, id=402, 708.246pt x 177.66376pt>
 File: categorie4.png Graphic file (type png)
 <use categorie4.png>
-Package pdftex.def Info: categorie4.png  used on input line 439.
+Package pdftex.def Info: categorie4.png  used on input line 443.
 (pdftex.def)             Requested size: 389.5365pt x 97.71536pt.
  [20 <./categorie4.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 443.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 443.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 447.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 447.
 
 (Rapport_S5.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 443.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 443.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 447.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 447.
+Package rerunfilecheck Info: File `Rapport_S5.out' has not changed.
+(rerunfilecheck)             Checksum: 91A6CF6311A474CF50B9CFC282E34EBD;3546.
 
-
-Package rerunfilecheck Warning: File `Rapport_S5.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Rapport_S5.out':
-(rerunfilecheck)             Before: B688569050D1E1465D0C1DC2425C6561;3428
-(rerunfilecheck)             After:  91A6CF6311A474CF50B9CFC282E34EBD;3546.
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 32041 strings out of 492970
- 607124 string characters out of 3135855
- 730024 words of memory out of 3000000
- 35339 multiletter control sequences out of 15000+200000
+ 32042 strings out of 492970
+ 607145 string characters out of 3135855
+ 730025 words of memory out of 3000000
+ 35340 multiletter control sequences out of 15000+200000
  570046 words of font info for 54 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,14n,74p,894b,755s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1844,9 +1848,9 @@ nts/cm/cmr5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 1/urw/helvetic/uhvro8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/zapfdin
 g/uzdr.pfb>
-Output written on Rapport_S5.pdf (20 pages, 1998232 bytes).
+Output written on Rapport_S5.pdf (20 pages, 1999579 bytes).
 PDF statistics:
- 501 PDF objects out of 1000 (max. 8388607)
+ 505 PDF objects out of 1000 (max. 8388607)
  84 named destinations out of 1000 (max. 500000)
- 467 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 475 words of extra memory for PDF output out of 10000 (max. 10000000)
 
