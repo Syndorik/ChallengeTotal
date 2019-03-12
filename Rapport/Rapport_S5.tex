@@ -15,6 +15,10 @@
 \usepackage{alertmessage}
 \usepackage{hyperref}
 \usepackage{xcolor}
+\usepackage{url}
+
+
+\usepackage{subcaption}
 
 
 %% Addtionnal packages can be loaded here
@@ -37,7 +41,7 @@
 %If needed, options can be passed to the underlying \includegraphics by calling \imtaAddPartnerLogo[<options>]{<path>}
 %\imtaAddPartnerLogo{<logo_path>}
 
-
+\sloppy
 \imtaSetIMTStyle % Sets font and headers/footers according to the IMT Atlantue style guidelines
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -58,11 +62,171 @@ En suivant le lien Github, vous trouverez:
 	\item Data-Engineering-and\_Modeling.ipynb : Jupyter Notebook sur la préparation des données et la modélisation.
 	\item Time\_series.ipynb : Jupyter Notebook sur la modelisation avec les Time Series.
 \end{itemize}
+
+Dans le cadre de notre projet ISA de 3e année, nous avons travaillé sur un challenge proposé par ARGEDIS, une filiale du groupe TOTAL chargée de la gestion et de l’exploitation des boutiques d’une partie des stations-service du réseau routier français. ARGEDIS prend en charge tout l’approvisionnement de ses boutiques en produits frais, snacking et boissons.\\
+L’objectif du challenge est de réaliser des prédictions de vente de certains produits vendus par deux stations-service entre le 1er et le 15 mai 2017.\\
+Les données mises à disposition sont un historique de vente depuis de 1er janvier 2016 jusqu’au 30 avril 2017, ainsi que certaines données open data (météo, trafic routier). Les jeux de données d’entraînement (01/01/2016 - 30/04/2017) et de test (01/05/2017 - 15/05/2017) sont disponibles directement sur la plateforme mise à disposition par ARGEDIS pour l’occasion.\\
+Nos résultats sont évalués directement par la plateforme d’ARGEDIS. Le fichier test à fournir à cette plateforme au format spécifié et contenant nos prédictions est évalué par la méthode RMSE: $\sqrt{\frac{\sum_{i=1}^{n}(\hat{y}_t-y_t)^2}{n}}$ avec $Y_i$ , la valeur réellement vendue et $\hat{Y}_i$ notre prédiction. \\
+Ne pouvant communiquer directement avec notre client ARGEDIS, les retours sur nos modèles nous étaient donnés par nos encadrants : Mr Laurent Lecornu et Mr John Puentes.\\
+La méthodologie CRISP est appliquée tout au long du projet.
+
 \section{Contexte}
+La grande majorité des stations-essence gérées par Argedis sont situées sur des autoroutes. L’importation des produits coûte cher à cause des frais de stockage et de transports (notamment à cause des tarifs autoroutiers). \\
+
+L’objectif du projet est donc de prédire de manière précise la consommation des différents produits. Cela permettrait de réduire le gaspillage et donc les dépenses invendues dues à des camions trop remplis et de limiter au maximum les pénuries et donc les pertes de chiffre d’affaires.
 \newpage
 \section{Visualisation des données}
 \alertinfo{Le code lié à cette partie est disponible sur le lien suivant \url{https://github.com/Syndorik/ChallengeTotal/blob/master/Challenge-Total-Overlook-of-the-data.ipynb}. 
 }
+\subsection{Description des jeux de données}
+Le jeu de données d’entraînement contient 39 variables et 198288 entrées. Cela correspond à un type d’article par station par jour. La durée d’observation est de 486 jours et il y a 2 stations-essence différentes. \\
+
+Le nombre d’entrées correspond donc au nombre d’articles différents possibles à la ventes (204) multiplié par le nombre de stations-essence (2), et le nombre de jours (486).
+
+\subsection{Premières variables}
+La variable id donne un identifiant unique à chaque entrée.\\
+La variable à prédire est nommée \textit{qte\_article\_vendue}. Celle-ci est discrète et est égale au multiple d’une valeur de base (différente pour chaque article et correspondant à un nombre de palettes, à un prix ou bien à un poids fixé par Argedis). Pour un identifiant donné, elle correspond donc au nombre d’achats d’un article un jour fixé, dans une station-service donnée, multipliée par la valeur de base de l’article.\\
+Pour chaque entrée :
+\begin{itemize}
+	\item On dispose d’une variable \textit{article\_nom} qui renseigne le nom de l’article.
+	\item La variable date renseigne la date.
+	\item La variable implant indique la station-service.
+\end{itemize}
+
+\subsection{Variables numériques}
+\subsubsection{Température}
+La température est exprimée par 4 variables de la forme \textit{t\_Hh\_Ville} avec $H\in {9,15}$ et $Ville \in {\mbox{Paris},\mbox{Rouen}}$. Elles donnent la température mesurée à Paris ou Rouen à 9h ou à 15h.\\
+Elle est exprimée en Kelvin. On peut l’obtenir en degrés Celsius en soustrayant 273,15, comme sur la représentation ci-dessous (plus facile à comprendre pour un utilisateur habitué aux Celsius). 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[keepaspectratio = true,scale=0.55]{t9hr.png}
+	\caption{Température pour une des stations Service au cours de l'année}
+	\label{fig:temp}
+\end{figure}
+\subsubsection{Vent}
+Le vent est exprimé par 4 variables de la forme \textit{ff\_Hh\_Ville }avec $H \in {9,15}$ et $Ville \in {\mbox{Paris},\mbox{Rouen}}$. Elles donnent la force du vent mesurée à Paris ou Rouen à 9h ou à 15h.\\
+
+En représentant le nombre d’occurrences des valeurs de force de vent, on se rend compte que ces valeurs sont comprises entre 0 et 11 et que la majorité de ces occurrences ont lieu pour des valeurs comprises entre 2 et 5. Cela correspond parfaitement avec une échelle de Beaufort et la comparaison des valeurs à dates fixées avec des valeurs relevées dans des registres à disposition sur infoclimat confirment cette hypothèse.
+\href{https://www.infoclimat.fr/observations-meteo/archives/27/janvier/2016/rouen-boos/07037.html}{\underline{\textbf{\textcolor[rgb]{0,0,1}{Lien vers info climat}}}}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[keepaspectratio = true,scale=0.55]{wind.png}
+	\caption{Vent pour une des stations Service au cours de l'année}
+	\label{fig:wind}
+\end{figure}
+\subsubsection{Nebulosité}
+
+
+La nébulosité est exprimée par 4 variables de la forme \textit{n\_Hh\_Ville} avec $H \in {9,15}$ et $Ville \in {\mbox{Paris},\mbox{Rouen}}$. Elles donnent la nébulosité mesurée à Paris ou Rouen à 9h ou à 15h.\\
+\begin{wrapfigure}[17]{L}{110mm}
+	\centering
+	\includegraphics[keepaspectratio = true,scale=0.55]{neb.png}
+	\caption[Nebulosité pour une des stations; Service au cours de l'année]{\tabular[t]{@{}l@{}}Nebulosité pour une des stations\\ Service au cours de l'année\endtabular}
+	\label{fig:neb}
+\end{wrapfigure}
+~\\
+
+En représentant le nombre d’occurrences de chaque valeur de nébulosité, on se rend compte que celle-ci ne prend qu’un certain nombre de valeurs discrètes. A part 4 points aberrants, la nébulosité ne peut prendre que 10 valeurs : les neufs octas possibles (de 0/8 à 8/8) affichés en pourcentages et la valeur 101. \\
+
+La nébulosité est traditionnellement calculée en octas, un 0 représentant un ciel dégagé, un 8 représentant un ciel couvert.
+
+Cependant, il reste à découvrir si la valeur 101 est significative d’un évènement particulier ou si elle doit être considérée comme une erreur de remplissage du jeu de données.\\
+En n’affichant uniquement que les jours où la nébulosité vaut 101 (\textbf{Figure ~\ref{fig:neb1}}) pour Rouen à 9h, on se rend compte que ce phénomène a lieu majoritairement pendant l’hiver.
+\newpage
+
+
+\begin{figure}
+	\centering
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[keepaspectratio = true,scale=0.55]{neb101.png}
+		\caption{Nébulosité à 101 au cours de l'année}
+		\label{fig:neb1}
+	\end{subfigure}%
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[keepaspectratio = true,scale=0.45]{meteo.png}
+		\caption{Météo pour un jour de nébulosité 101}
+		\label{fig:meteo}
+	\end{subfigure}
+	\caption{Vérification de nébulosité à 101}
+\end{figure}
+Nous avons regardé quels étaient les relevés météo enregistrés pour le début du mois de Janvier 2017, où les valeurs 101 de nébulosité reviennent très souvent.\\
+Il s'est avéré que cette période avait été forte en brouillard, comme nous l’indique la photo ci-dessous. En comparant les relevés jours par jours, cela correspond. \\
+La valeur 101 indique donc du brouillard donc une visibilité très mauvaise (\textbf{Figure ~\ref{fig:meteo}});
+
+\subsubsection{Précipitations}
+Les précipitations sont exprimées par 4 variables de la forme \textit{rr3\_Hh\_Ville} avec$ H \in {9,15}$ et $Ville \in {\mbox{Paris},\mbox{Rouen}}$. Elles donnent les précipitations mesurées à Paris ou Rouen à 9h ou à 15h.
+En affichant les précipitations pour chaque jour de l’année, on remarque que la valeur renseignée est la somme des précipitations (en mm) tombées lors des 3 dernières heures selon infoclimat.(\href{https://www.infoclimat.fr/climatologie/annee/2016/rouen-boos/valeurs/07037.html}{\underline{\textbf{\textcolor[rgb]{0,0,1}{Lien vers info climat}}}}) 
+Les valeurs égales à -0,1 ne semblent pas décrire un évènement particulier. Elles doivent être causées par une erreur de mesure entre deux relevés : le relevé précédent a été surestimé de 0,1 et il n’y a pas eu de précipitations entre ces deux relevés.
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[keepaspectratio = true,scale=0.45]{precip.png}
+		\caption{Précipitation au cours de l'année}
+		\label{fig:precip}
+	\end{subfigure}%
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[keepaspectratio = true,scale=0.45]{precip2.png}
+		\caption{Info climat pour le 4 Février 2017 précipitations}
+		\label{fig:precip2}
+	\end{subfigure}
+	\caption{Vérification du calcul des précipitations}
+\end{figure}
+\newpage
+\subsection{Variables catégorielles}
+\subsubsection{Stations-service}
+D’après le site de Total France, les deux stations sont situées en Normandie, dans l’ouest de Rouen. La station dont l’identifiant est NF078544 est la station de Beuzeville, située la plus à l’ouest de Rouen.
+ (\underline{\textbf{\textcolor[rgb]{0,0,1}{\href{https://www.google.fr/maps/place/Total/@49.3093522,0.3356408,11.92z/data=!4m5!3m4!1s0x47e1caf7b2d7546d:0xa7a5f053e610517e!8m2!3d49.3248478!4d0.328814}{Lien vers la position de la station sur google maps}}}})  (\textbf{Figure ~\ref{fig:maps}})\\
+
+La station dont l’identifiant est NF059473 est la station de Bosgouet, plus proche de Rouen.
+ (\href{https://www.google.fr/maps/search/13+-+AIRE+DE+BOSGOUET+SUD+27310+BOURG+ACHARd/@49.3711274,0.7536505,10.69z}{\underline{\textbf{\textcolor[rgb]{0,0,1}{Lien vers la position de la station sur google maps}}}})  (\textbf{Figure ~\ref{fig:maps}}) \\
+
+ 
+\subsubsection{Catégories de produits}
+Les différents articles sont décrits selon une hiérarchie de 3 catégories : $\mbox{Article à vendre} \subset \mbox{Catégorie 6} \subset \mbox{Catégorie 5} \subset \mbox{Catégorie 4}$;\\
+Chaque catégorie est décrite par les variables \textit{id\_categorie\_X} et \textit{catX\_nom} avec $X \in {4,5,6}$. Par exemple, une catégorie 4 a pour nom « Boulan Vienn Patiss » et pour id 1001639.
+
+\subsubsection{Bison Futé}
+Pour ce qui est de la circulation, on dispose de 6 variables \textit{aller\_zone\_X} avec $X \in {1,2,3,4,5,6}$ et de 6 variables \textit{retour\_zone\_X} avec $X \in {1,2,3,4,5,6}$. Leurs valeurs vont de 0 à 3, 0 représentant un trafic fluide et 3 représentant une circulation très difficile. (\textbf{Figure ~\ref{fig:bison}})
+
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[keepaspectratio = true,scale=0.45]{maps.png}
+		\caption{Position des stations service}
+		\label{fig:maps}
+	\end{subfigure}%
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[keepaspectratio = true,scale=0.45]{bison.png}
+		\caption{Carte Bison Futé}
+		\label{fig:bison}
+	\end{subfigure}
+	\caption{Différentes cartes}
+\end{figure}
+
+\subsection{Corrélations}
+\subsubsection{Corrélations entre variables}
+Une carte de corrélations a été réalisée entre toutes les variables afin de savoir lesquelles influent fortement sur le résultat et lesquelles contiennent des informations redondantes.\\
+Les variables quantitatives (température, précipitations, vent, nébulosité) sont fortement corrélées entre elles. En particulier les 4 variables de température sont corrélées entre elles au minimum à 95\%, elles contiennent toutes les 4 la même information et n’en garder qu’une ou faire une moyenne des 4 devrait être suffisant. \\
+La variable à prédire (\textit{qte\_article\_vendue}) ne semble être corrélée qu’à la température. Certains produits sont-ils particulièrement dépendant de la température pour être vendus ?
+\begin{figure}[!h]
+	\centering
+	\includegraphics[keepaspectratio = true,scale=0.8]{corr.png}
+	\caption{Corrélation entre les différentes variables}
+	\label{fig:corr}
+\end{figure}
+\subsubsection{Corrélations entre certains articles et température}
+La vente de certains articles est fortement corrélée positivement à la température. Par exemple, la vente de « Discoveries Americano 22Cl Starbucks » qui sont des cafés glacés est corrélée à 49\% à la température. \\
+Globalement, les sandwichs (particulièrement les sandwichs suédois et ceux à bases de poissons), café glacés et boissons, qui sont des produits frais, sont corrélés à la température alors que les repas, pâtisseries et desserts chauds sont inversement corrélés à la température.\\
+On aurait pu s’attendre à ce que les cafés soient plus consommés en hiver, cependant l’afflux de passager pendant l’été compense cette baisse de consommation moyenne par passagers. Par conséquent, la vente de cafés chauds n’est pas corrélée à la température.
+
+
+
 \newpage
 \section{Préparation des données (Data Engineering)}
 \alertinfo{Le code lié à cette partie est disponible sur le lien suivant \url{https://github.com/Syndorik/ChallengeTotal/blob/master/Data-Engineering-and_Modeling.ipynb}. 
@@ -111,7 +275,7 @@ Une fois ces transformations réalisées, nous supprimons la colonne date. En ef
 Il est à noter que toutes ces segmentations temporelles ont pour but d'affiner le modèle, et retirer le plus d'information de la variable \textit{date}. Cependant pour le modèle basé sur les Time Series, ces segmentations ne seront pas conservées, car incompatibles avec le modèle. Nous expliciterons ce sujet dans la \textbf{section ~\ref{sec:tm}}
 
 \subsection{Influence des catégories}
-Nous voulions savoir si la distinction par catégorie était utile, sachant qu'il y a inclusion des catégories : $cat6 \subset cat5 \subset cat4$. La \textbf{Figure ~\ref{cat5p1} et ~\ref{cat5p2} } représente les ventes en fonction de la catégorie 5 pendant la période.\\ 
+Nous voulions savoir si la distinction par catégorie était utile, sachant qu'il y a inclusion des catégories : $cat6 \subset cat5 \subset cat4$. La \textbf{Figure ~\ref{fig:cat5p1} et ~\ref{fig:cat5p2} } représente les ventes en fonction de la catégorie 5 pendant la période.\\ 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[keepaspectratio = true,scale=0.65]{categorie5part1.png}
@@ -237,12 +401,20 @@ Le deuxième point est bien plus problématique. Nous l'avons testé  sur les r�
 \label{sec:tm}
 \alertinfo{Le code lié à cette partie est disponible sur le lien suivant \url{https://github.com/Syndorik/ChallengeTotal/blob/master/Time_series.ipynb}. 
 }
+Ce modèle est spécial dans le sens où il va se baser uniquement sur l'évolution des produits vendus sur le temps. Ainsi, l'ensemble des préparations des données n'est pas nécessaire. Nous utilisons le module \textit{Prophet}. Ce modèle va se baser sur les évènements passés pour prévoir les évènements futurs à partir d'une analyse des séries temporelles. Par ailleurs, nous pouvons indiquer des périodes spéciales au modèle, en particulier les périodes de vacances. Les résultats sont visibles sur la \textbf{Figure ~\ref{fig:venteprev}}. Elle représente l'erreur par rapport à la réalité en terme de quantité vendue, sur la période de test. Les résultats suivant sont obtenus:
+\alertinfo{RMSE = 1.3479 }
+Nous pouvons remarquer que les grandes vacances, et en soit l'ensemble des vacances indiquées (jour fériés inclus) sont très bien prédites par le modèle, l'erreur est presque nulle. A l'inverse le reste de l'année, n'est pas bien prédit. En effet, les quantités vendues pendant les vacances sont tellement grandes que le reste de l'année apparaît comme du bruit. Ainsi le modèle n'arrive pas à bien approximer ces périodes de l'année.
+\begin{figure}[!h]
+	\centering 
+	\includegraphics[keepaspectratio = true,scale=0.55]{ventesprevision.png}
+	\caption{Prévision des ventes}
+	\label{fig:venteprev}
+\end{figure}
+Même si le score RMSE est assez mauvais, il est très intéressant d'utiliser les Time Series pour prédire les vacances, tandis qu'on peut utiliser une méthode ensembliste vu précédemment pour prédire les période "normale" de l'année.
 
+\subsection{Critique des résultats}
+L'étude produite au cours de cette année aurait pu être plus fructueuse en terme de résultat. Il serait probablement intéressant de voir si la création d'un modèle par produit donne de meilleurs résultats que ce qui a été fait ici (ie la création d'un unique modèle). En effet les ventes sont très variable d'un produit à l'autre. Ainsi en ne se concentrant que sur un seul, nous pourrions éliminer cette erreur de variance.
 
-\newpage
-\subsection{Analyse des résultats}
-Etudes par produit aurait pu être plus fructueuse. Cela n'a pas été fait, mais peut donner des meilleurs résultats, surtout que les ventes de produits sont très différentes et varie différement. 
-\newpage
 \section{Conclusion}
 
 \newpage
